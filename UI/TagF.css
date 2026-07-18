@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.modal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-row select,
+.filter-row input[type="text"] {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fafafa;
+  flex: 1 1 auto;
+}
+.filter-row select { flex: 0 0 100px; }
+.filter-row input[type="text"] { flex: 2 1 180px; }
+
+.filter-row button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 0 0 auto;
+}
+
+.btn-primary {
+  background: #4a90d9;
+  color: white;
+}
+.btn-primary:hover { background: #357abd; }
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #bdc3c7;
+  color: #2c3e50;
+}
+.btn-secondary:hover { background: #a6acb2; }
+
+.tag-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e0e6ed;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background: #fafafa;
+}
+
+.tag-item {
+  padding: 8px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+}
+.tag-item:last-child { border-bottom: none; }
+.tag-item:hover { background: #e6f0fa; }
+.tag-item.selected { background: #d0e3f7; }
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.button-row button {
+  min-width: 80px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+  .filter-row { flex-direction: column; align-items: stretch; }
+  .filter-row select, .filter-row input { flex: 1 1 auto; width: 100%; }
+}

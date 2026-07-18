@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Category</title>
+  <link rel="stylesheet" href="HabitCategoryCU.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2 id="windowTitle">New Habit Category</h2>
+
+      <form id="categoryForm" novalidate>
+        <!-- Category Name -->
+        <div class="field">
+          <label for="txtName">Category Name</label>
+          <input type="text" id="txtName" placeholder="e.g. Reading" required />
+        </div>
+
+        <!-- Icon -->
+        <div class="field">
+          <label for="txtIcon">Icon</label>
+          <input type="text" id="txtIcon" placeholder="e.g. icon-reading" />
+        </div>
+
+        <!-- Color -->
+        <div class="field">
+          <label for="txtColor">Color (Hex)</label>
+          <div class="color-row">
+            <input type="text" id="txtColor" placeholder="#4A90D9" />
+            <div id="colorPreview" class="color-preview"></div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div id="lblError" class="error-message hidden"></div>
+
+        <!-- Buttons -->
+        <div class="button-row">
+          <button type="submit" id="btnSave" class="btn-primary">Save</button>
+          <button type="button" id="btnCancel" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="HabitCategoryCU.js"></script>
+</body>
+</html>

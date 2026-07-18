@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tag Viewer</title>
+  <link rel="stylesheet" href="TagV.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Tag Details</h2>
+
+      <div class="fields-grid">
+        <div class="field-row">
+          <label>Tag ID:</label>
+          <span id="txtTagId" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Name:</label>
+          <span id="txtName" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Created:</label>
+          <span id="txtCreatedAt" class="value">—</span>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="btnFind" class="btn-primary">Find...</button>
+        <button id="btnSelect" class="btn-success" disabled>Select</button>
+        <button id="btnClose" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="TagV.js"></script>
+</body>
+</html>

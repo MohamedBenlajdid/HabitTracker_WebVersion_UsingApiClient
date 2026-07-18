@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.modal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  width: 500px;
+  max-width: 100%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.fields-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 6px 12px;
+  margin-bottom: 15px;
+}
+
+.field-row {
+  display: contents;
+}
+
+.field-row label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+.field-row .value {
+  font-size: 14px;
+  color: #1a1a1a;
+  padding: 4px 0;
+  word-break: break-word;
+}
+
+.content-row .value {
+  white-space: pre-wrap;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.button-row button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-primary {
+  background: #4a90d9;
+  color: white;
+}
+.btn-primary:hover { background: #357abd; }
+
+.btn-success {
+  background: #27ae60;
+  color: white;
+}
+.btn-success:hover { background: #1e8449; }
+.btn-success:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #bdc3c7;
+  color: #2c3e50;
+}
+.btn-secondary:hover { background: #a6acb2; }
+
+/* Responsive */
+@media (max-width: 550px) {
+  .fields-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .field-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .field-row label {
+    margin-bottom: 2px;
+  }
+}

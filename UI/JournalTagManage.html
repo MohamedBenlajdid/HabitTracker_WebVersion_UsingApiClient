@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Tags</title>
+  <link rel="stylesheet" href="JournalTagManage.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Manage Tags</h2>
+
+      <div class="header-row">
+        <span id="txtEntryInfo" class="entry-info">Entry: Loading...</span>
+        <button id="btnAddTag" class="btn-primary">Add Tag</button>
+      </div>
+
+      <div id="tagList" class="tag-list">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div id="txtError" class="message hidden"></div>
+
+      <div class="button-row">
+        <button id="btnRemoveTag" class="btn-danger" disabled>Remove Selected</button>
+        <button id="btnSave" class="btn-success">Save</button>
+        <button id="btnCancel" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="JournalTagManage.js"></script>
+</body>
+</html>

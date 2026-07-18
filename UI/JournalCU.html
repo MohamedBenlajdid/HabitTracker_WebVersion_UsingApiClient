@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal Entry</title>
+  <link rel="stylesheet" href="JournalCU.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2 id="windowTitle">Journal Entry</h2>
+
+      <form id="journalForm">
+        <!-- Title -->
+        <div class="field">
+          <label for="txtTitle">Title:</label>
+          <input type="text" id="txtTitle" placeholder="Enter title" />
+        </div>
+
+        <!-- Date -->
+        <div class="field">
+          <label for="dpEntryDate">Date:</label>
+          <input type="date" id="dpEntryDate" />
+        </div>
+
+        <!-- Mood -->
+        <div class="field mood-field">
+          <label>Mood:</label>
+          <div class="mood-row">
+            <button type="button" id="btnSelectMood" class="btn-secondary">Select Mood</button>
+            <span id="txtMoodDisplay" class="mood-display"></span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="field">
+          <label for="txtContent">Content:</label>
+          <textarea id="txtContent" rows="5" placeholder="Write your thoughts..."></textarea>
+        </div>
+
+        <!-- Error/Success -->
+        <div id="txtError" class="message hidden"></div>
+
+        <!-- Buttons -->
+        <div class="button-row">
+          <button type="button" id="btnManageTags" class="btn-secondary" style="display:none;">Manage Tags</button>
+          <button type="submit" id="btnSave" class="btn-primary">Save</button>
+          <button type="button" id="btnCancel" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mood selection modal -->
+  <div id="moodModal" class="modal-overlay hidden">
+    <div class="modal-card mood-modal">
+      <h3>Select Mood</h3>
+      <div id="moodList" class="mood-list">
+        <!-- Filled dynamically -->
+      </div>
+      <button id="moodCancel" class="btn-secondary" style="margin-top:10px;">Cancel</button>
+    </div>
+  </div>
+
+  <script type="module" src="JournalCU.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Habit Category</title>
+  <link rel="stylesheet" href="HabitCategoryV.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Category Details</h2>
+
+      <button id="btnFind" class="find-button">Find by Name...</button>
+
+      <div class="field-row">
+        <label>ID</label>
+        <span id="txtId">-</span>
+      </div>
+
+      <div class="field-row">
+        <label>Name</label>
+        <span id="txtName">-</span>
+      </div>
+
+      <div class="field-row">
+        <label>Icon</label>
+        <span id="txtIcon">-</span>
+      </div>
+
+      <div class="field-row color-row">
+        <label>Color</label>
+        <span id="txtColor">-</span>
+        <div id="colorPreview" class="color-preview"></div>
+      </div>
+
+      <div id="lblError" class="error-message hidden"></div>
+
+      <div class="button-row">
+        <button id="btnClose" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitCategoryV.js"></script>
+</body>
+</html>

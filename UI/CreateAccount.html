@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
+  <link rel="stylesheet" href="CreateAccount.css" />
+</head>
+<body>
+  <div class="window-overlay">
+    <div class="window-card">
+      <h1>Create Account</h1>
+
+      <form id="createAccountForm" novalidate>
+        <input type="text" id="txtFirstName" placeholder="First name" required />
+        <input type="text" id="txtLastName" placeholder="Last name" required />
+        <input type="email" id="txtEmail" placeholder="Email" required />
+        <input type="password" id="txtPassword" placeholder="Password" required />
+        <input type="password" id="txtConfirmPassword" placeholder="Confirm password" required />
+
+        <div id="lblError" class="error-message hidden"></div>
+
+        <button type="submit" id="btnCreateAccount" class="btn-primary">Create Account</button>
+
+        <button type="button" id="btnLogin" class="btn-link">Already have an account? Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="CreateAccount.js"></script>
+</body>
+</html>

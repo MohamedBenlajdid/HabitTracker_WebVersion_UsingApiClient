@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Habit</title>
+  <link rel="stylesheet" href="HabitV.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Habit Details</h2>
+
+      <button id="btnFind" class="find-button">Find by Name...</button>
+
+      <div class="field-row">
+        <label>ID</label>
+        <span id="txtId">-</span>
+      </div>
+      <div class="field-row">
+        <label>Name</label>
+        <span id="txtName">-</span>
+      </div>
+      <div class="field-row">
+        <label>Category</label>
+        <span id="txtCategory">-</span>
+      </div>
+      <div class="field-row">
+        <label>Target / Week</label>
+        <span id="txtTargetPerWeek">-</span>
+      </div>
+      <div class="field-row">
+        <label>Target / Day</label>
+        <span id="txtTargetPerDay">-</span>
+      </div>
+      <div class="field-row">
+        <label>Reminder</label>
+        <span id="txtReminder">-</span>
+      </div>
+      <div class="field-row description-row">
+        <label>Description</label>
+        <span id="txtDescription">-</span>
+      </div>
+
+      <div id="lblError" class="error-message hidden"></div>
+
+      <div class="button-row">
+        <button id="btnClose" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitV.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Log Details</title>
+  <link rel="stylesheet" href="HabitLogV.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <!-- Find button (visible when no ID) -->
+      <div id="pnlFind" class="find-panel">
+        <button id="btnFindLog" class="btn-find">Find Log...</button>
+      </div>
+
+      <!-- Details panel (hidden until log loaded) -->
+      <div id="pnlDetails" class="details-panel hidden">
+        <div class="detail-row">
+          <span class="label">Log ID:</span>
+          <span id="txtHabitLogID" class="value">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Habit:</span>
+          <span id="txtHabitName" class="value">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Date:</span>
+          <span id="txtLogDate" class="value">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Completed:</span>
+          <input type="checkbox" id="chkCompleted" disabled />
+        </div>
+        <div class="detail-row">
+          <span class="label">Completed At:</span>
+          <span id="txtCompletedAt" class="value">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Notes:</span>
+          <span id="txtNotes" class="value">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Created At:</span>
+          <span id="txtCreatedAt" class="value">—</span>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div id="lblError" class="error-message hidden"></div>
+
+      <!-- Close button -->
+      <div class="button-row">
+        <button id="btnClose" class="btn-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitLogV.js"></script>
+</body>
+</html>

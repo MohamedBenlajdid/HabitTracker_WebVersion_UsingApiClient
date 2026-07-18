@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Habit Log</title>
+  <link rel="stylesheet" href="HabitLogCU.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <!-- Top info -->
+      <div class="top-info">
+        <div><strong>User:</strong> <span id="txtUsername">Loading...</span></div>
+        <div><strong>Date:</strong> <span id="txtDate">Loading...</span></div>
+      </div>
+
+      <!-- Error -->
+      <div id="lblError" class="error-message hidden"></div>
+
+      <!-- Table -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Habit</th>
+              <th>Done?</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="habitLogBody">
+            <!-- Rows inserted dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-row">
+        <button id="btnSave" class="btn-save">Save</button>
+        <button id="btnCancel" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitLogCU.js"></script>
+</body>
+</html>

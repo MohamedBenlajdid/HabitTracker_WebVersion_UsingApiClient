@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Form</title>
+  <link rel="stylesheet" href="MoodCU.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2 id="windowTitle">Mood Form</h2>
+      <form id="moodForm">
+        <div class="field">
+          <label for="txtName">Mood Name:</label>
+          <input type="text" id="txtName" placeholder="Enter mood name" />
+        </div>
+        <div class="field">
+          <label for="txtEmoji">Emoji:</label>
+          <input type="text" id="txtEmoji" placeholder="e.g. 😊" />
+        </div>
+        <div class="field">
+          <label for="txtColor">Color (Hex):</label>
+          <input type="text" id="txtColor" placeholder="#FF0000" />
+        </div>
+        <div id="txtError" class="message hidden"></div>
+        <div class="button-row">
+          <button type="submit" id="btnSave" class="btn-primary">Save</button>
+          <button type="button" id="btnCancel" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="MoodCU.js"></script>
+</body>
+</html>

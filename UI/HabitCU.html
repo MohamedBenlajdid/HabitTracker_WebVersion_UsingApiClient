@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit</title>
+  <link rel="stylesheet" href="HabitCU.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2 id="windowTitle">New Habit</h2>
+
+      <form id="habitForm" novalidate>
+        <!-- Name -->
+        <div class="field">
+          <label for="txtName">Name</label>
+          <input type="text" id="txtName" placeholder="e.g. Morning Run" required />
+        </div>
+
+        <!-- Target Per Week -->
+        <div class="field">
+          <label for="txtTargetPerWeek">Target Per Week</label>
+          <input type="number" id="txtTargetPerWeek" placeholder="e.g. 5" min="0" required />
+        </div>
+
+        <!-- Target Per Day -->
+        <div class="field">
+          <label for="txtTargetPerDay">Target Per Day (optional)</label>
+          <input type="number" id="txtTargetPerDay" placeholder="e.g. 1" min="0" />
+        </div>
+
+        <!-- Reminder Time -->
+        <div class="field">
+          <label for="txtReminderTime">Reminder Time (HH:mm)</label>
+          <input type="time" id="txtReminderTime" placeholder="08:00" />
+        </div>
+
+        <!-- Description -->
+        <div class="field">
+          <label for="txtDescription">Description (optional)</label>
+          <textarea id="txtDescription" rows="2" placeholder="Optional notes..."></textarea>
+        </div>
+
+        <!-- Is Archived -->
+        <div class="field checkbox-field">
+          <input type="checkbox" id="chkArchived" />
+          <label for="chkArchived">Archived</label>
+        </div>
+
+        <!-- Category -->
+        <div class="field">
+          <label for="ddlCategory">Category</label>
+          <select id="ddlCategory">
+            <option value="">None</option>
+          </select>
+        </div>
+
+        <!-- Error -->
+        <div id="lblError" class="error-message hidden"></div>
+
+        <!-- Buttons -->
+        <div class="button-row">
+          <button type="submit" id="btnSave" class="btn-primary">Save</button>
+          <button type="button" id="btnCancel" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="HabitCU.js"></script>
+</body>
+</html>

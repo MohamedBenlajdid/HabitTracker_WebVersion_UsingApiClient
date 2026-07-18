@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tag</title>
+  <link rel="stylesheet" href="TagCU.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2 id="windowTitle">Tag</h2>
+
+      <form id="tagForm">
+        <div class="field">
+          <label for="txtName">Tag Name:</label>
+          <input type="text" id="txtName" placeholder="Enter tag name" />
+        </div>
+
+        <div id="txtError" class="message hidden"></div>
+
+        <div class="button-row">
+          <button type="submit" id="btnSave" class="btn-primary">Save</button>
+          <button type="button" id="btnCancel" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="TagCU.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Habits</title>
+  <link rel="stylesheet" href="HabitManagement.css" />
+</head>
+<body>
+  <div class="page-container">
+    <!-- Header: title + search + action buttons -->
+    <div class="header-row">
+      <h2>Habits</h2>
+      <input type="text" id="txtSearch" placeholder="Filter by name..." />
+      <div class="button-group">
+        <button id="btnNew" class="btn-primary">New</button>
+        <button id="btnFind" class="btn-primary">Find</button>
+        <button id="btnView" class="btn-primary">View</button>
+        <button id="btnDelete" class="btn-danger">Delete</button>
+        <button id="btnTodayLog" class="btn-success">Today's Log</button>
+        <button id="btnFilterLogs" class="btn-success">Filter Logs</button>
+        <button id="btnViewLogs" class="btn-success">View Logs</button>
+      </div>
+    </div>
+
+    <!-- Habit list -->
+    <div id="habitListContainer" class="list-container">
+      <!-- Items will be rendered here -->
+    </div>
+
+    <!-- Status and error -->
+    <div class="status-area">
+      <div id="lblStatus" class="status-text">Loading...</div>
+      <div id="lblError" class="error-message hidden"></div>
+    </div>
+  </div>
+
+  <!-- Custom confirm modal -->
+  <div id="confirmModal" class="modal-overlay hidden">
+    <div class="modal-card confirm-card">
+      <p id="confirmMessage">Are you sure?</p>
+      <div class="confirm-buttons">
+        <button id="confirmYes" class="btn-primary">Yes</button>
+        <button id="confirmNo" class="btn-secondary">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitManagement.js"></script>
+</body>
+</html>

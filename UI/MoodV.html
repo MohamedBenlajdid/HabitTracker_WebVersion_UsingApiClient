@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Viewer</title>
+  <link rel="stylesheet" href="MoodV.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Mood Details</h2>
+
+      <div class="fields-grid">
+        <div class="field-row">
+          <label>Mood ID:</label>
+          <span id="txtMoodId" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Name:</label>
+          <span id="txtName" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Emoji:</label>
+          <span id="txtEmoji" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Color:</label>
+          <span id="txtColor" class="value">—</span>
+          <span id="colorPreview" class="color-preview"></span>
+        </div>
+        <!-- Optional CreatedAt – hidden by default -->
+        <div class="field-row" style="display:none;">
+          <label>Created:</label>
+          <span id="txtCreatedAt" class="value">—</span>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="btnFind" class="btn-primary">Find...</button>
+        <button id="btnSelect" class="btn-success" disabled>Select</button>
+        <button id="btnClose" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="MoodV.js"></script>
+</body>
+</html>

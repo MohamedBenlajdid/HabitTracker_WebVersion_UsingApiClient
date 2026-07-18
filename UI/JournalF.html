@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Journal Entry</title>
+  <link rel="stylesheet" href="JournalF.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Find Journal Entry</h2>
+
+      <!-- Filter row -->
+      <div class="filter-row">
+        <select id="cmbFilterField">
+          <option value="Title">Title</option>
+          <option value="Content">Content</option>
+          <option value="Date">Date (yyyy-MM-dd)</option>
+          <option value="Mood">Mood</option>
+        </select>
+        <input type="text" id="txtFilterValue" placeholder="Filter text..." />
+        <button id="btnFind" class="btn-primary">Find</button>
+        <button id="btnRefresh" class="btn-secondary">Refresh</button>
+      </div>
+
+      <!-- Results list -->
+      <div id="entryList" class="entry-list">
+        <!-- Items rendered dynamically -->
+      </div>
+
+      <!-- Bottom buttons -->
+      <div class="button-row">
+        <button id="btnSelect" class="btn-primary" disabled>Select</button>
+        <button id="btnCancel" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="JournalF.js"></script>
+</body>
+</html>

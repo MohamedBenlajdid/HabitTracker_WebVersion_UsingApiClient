@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journaling Hub</title>
+  <link rel="stylesheet" href="JournalingSessionManagement.css" />
+</head>
+<body>
+  <div class="page-container">
+    <!-- Header -->
+    <header class="header">
+      <div id="txtUserEmail">👤 Loading...</div>
+      <div id="txtDateTime">📅 Loading...</div>
+    </header>
+
+    <!-- Card grid -->
+    <main class="card-grid">
+      <!-- Mood -->
+      <section class="card">
+        <h3>😊 Mood</h3>
+        <button class="btn-create" data-action="mood-create">➕ Create</button>
+        <button class="btn-find" data-action="mood-find">🔍 Find</button>
+        <button class="btn-view" data-action="mood-view">👁 View</button>
+      </section>
+
+      <!-- Journal -->
+      <section class="card">
+        <h3>📓 Journal</h3>
+        <button class="btn-create" data-action="journal-create">➕ New Entry</button>
+        <button class="btn-find" data-action="journal-find">🔍 Find Entry</button>
+        <button class="btn-view" data-action="journal-view">👁 View Entry</button>
+      </section>
+
+      <!-- Tags -->
+      <section class="card">
+        <h3>🏷 Tags</h3>
+        <button class="btn-create" data-action="tag-create">➕ New Tag</button>
+        <button class="btn-find" data-action="tag-find">🔍 Find Tag</button>
+        <button class="btn-view" data-action="tag-view">👁 View Tag</button>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="JournalingSessionManagement.js"></script>
+</body>
+</html>

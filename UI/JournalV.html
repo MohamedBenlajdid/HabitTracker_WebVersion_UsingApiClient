@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal Entry Viewer</title>
+  <link rel="stylesheet" href="JournalV.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Journal Entry Details</h2>
+
+      <!-- Fields in a grid -->
+      <div class="fields-grid">
+        <div class="field-row">
+          <label>Entry ID:</label>
+          <span id="txtEntryId" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>User ID:</label>
+          <span id="txtUserId" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Date:</label>
+          <span id="txtEntryDate" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Mood:</label>
+          <span id="txtMood" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Title:</label>
+          <span id="txtTitle" class="value">—</span>
+        </div>
+        <div class="field-row content-row">
+          <label>Content:</label>
+          <span id="txtContent" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Created:</label>
+          <span id="txtCreatedAt" class="value">—</span>
+        </div>
+        <div class="field-row">
+          <label>Updated:</label>
+          <span id="txtUpdatedAt" class="value">—</span>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-row">
+        <button id="btnFind" class="btn-primary">Find...</button>
+        <button id="btnSelect" class="btn-success" disabled>Select</button>
+        <button id="btnClose" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="JournalV.js"></script>
+</body>
+</html>

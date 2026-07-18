@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HabitTracker - Dashboard</title>
+  <link rel="stylesheet" href="Main.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="user-info">
+      <div id="txtUserEmail">👤 user@example.com</div>
+      <div id="txtDateTime">📅 01 Jan 2025  🕒 12:00</div>
+    </div>
+    <div class="header-right">
+      <span id="lblWelcome">Welcome!</span>
+      <button id="btnLogout" class="btn-logout">🚪 Logout</button>
+    </div>
+  </header>
+
+  <!-- Card grid -->
+  <main class="card-grid">
+    <!-- Habits -->
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Habits</div>
+      <div class="card-actions">
+        <button class="btn-primary" data-action="manage-habits">Manage</button>
+        <button class="btn-purple" data-action="manage-categories">Categories</button>
+      </div>
+    </div>
+
+    <!-- Journaling -->
+    <div class="card">
+      <div class="card-icon">📓</div>
+      <div class="card-title">Journaling</div>
+      <div class="card-actions">
+        <button class="btn-primary" data-action="journal-hub">Open Hub</button>
+      </div>
+    </div>
+
+    <!-- Tasks (Coming Soon) -->
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <div class="card-title">Tasks</div>
+      <div class="card-actions">
+        <button class="btn-disabled" data-action="tasks">Open</button>
+      </div>
+    </div>
+
+    <!-- Settings (Coming Soon) -->
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Settings</div>
+      <div class="card-actions">
+        <button class="btn-disabled" data-action="settings">Open</button>
+      </div>
+    </div>
+
+    <!-- Roles & Permissions (Coming Soon) -->
+    <div class="card">
+      <div class="card-icon">🔐</div>
+      <div class="card-title">Roles &amp; Permissions</div>
+      <div class="card-actions">
+        <button class="btn-disabled" data-action="roles">Open</button>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="Main.js"></script>
+</body>
+</html>

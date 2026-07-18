@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Tag</title>
+  <link rel="stylesheet" href="TagF.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Find Tag</h2>
+
+      <div class="filter-row">
+        <select id="cmbFilterField" disabled>
+          <option value="Name" selected>Name</option>
+        </select>
+        <input type="text" id="txtFilterValue" placeholder="Filter by name..." />
+        <button id="btnFind" class="btn-primary">Find</button>
+        <button id="btnRefresh" class="btn-secondary">Refresh</button>
+      </div>
+
+      <div id="tagList" class="tag-list">
+        <!-- Items rendered dynamically -->
+      </div>
+
+      <div class="button-row">
+        <button id="btnSelect" class="btn-primary" disabled>Select</button>
+        <button id="btnCancel" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="TagF.js"></script>
+</body>
+</html>

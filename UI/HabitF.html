@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Habit</title>
+  <link rel="stylesheet" href="HabitF.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <h2>Find Habit</h2>
+
+      <div class="field">
+        <label for="txtSearch">Search by Name</label>
+        <input type="text" id="txtSearch" placeholder="Type a habit name..." />
+      </div>
+
+      <div id="habitList" class="habit-list"></div>
+
+      <div id="lblError" class="error-message hidden"></div>
+
+      <div class="button-row">
+        <button id="btnSelect" class="btn-primary">Select</button>
+        <button id="btnCancel" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitF.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Habit Log</title>
+  <link rel="stylesheet" href="HabitLogF.css" />
+</head>
+<body>
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <!-- Filter panel -->
+      <div class="filter-panel">
+        <label for="dpLogDate"><strong>Date:</strong></label>
+        <input type="date" id="dpLogDate" />
+        <button id="btnLoad" class="btn-load">Load</button>
+      </div>
+
+      <!-- Error -->
+      <div id="lblError" class="error-message hidden"></div>
+
+      <!-- Table -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Log ID</th>
+              <th>Habit</th>
+              <th>Completed</th>
+              <th>Notes</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="logBody">
+            <!-- Rows inserted dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Bottom buttons -->
+      <div class="button-row">
+        <button id="btnCancel" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitLogF.js"></script>
+</body>
+</html>

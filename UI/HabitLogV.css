@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.modal-card {
+  background: #f5f7fa;
+  border-radius: 12px;
+  padding: 25px;
+  width: 420px;
+  max-width: 100%;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.find-panel {
+  margin-bottom: 15px;
+}
+
+.btn-find {
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-find:hover {
+  background: #2980b9;
+}
+
+.details-panel {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e0e6ed;
+  margin-bottom: 10px;
+}
+
+.details-panel.hidden {
+  display: none;
+}
+
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  padding: 4px 0;
+  gap: 5px;
+}
+
+.detail-row .label {
+  font-weight: 700;
+  width: 100px;
+  flex-shrink: 0;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.detail-row .value {
+  font-size: 14px;
+  color: #2c3e50;
+  word-break: break-word;
+}
+
+.detail-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #27ae60;
+  pointer-events: none;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  word-wrap: break-word;
+  padding: 6px 0;
+  margin-bottom: 8px;
+}
+
+.error-message.hidden {
+  display: none;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-close {
+  background: #bdc3c7;
+  color: #2c3e50;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 90px;
+}
+
+.btn-close:hover {
+  background: #a6acb2;
+}

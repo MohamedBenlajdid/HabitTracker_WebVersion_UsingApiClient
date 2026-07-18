@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📁 Habit Category Management</title>
+  <link rel="stylesheet" href="HabitCategoryManagement.css" />
+</head>
+<body>
+  <div class="page-container">
+    <h1 class="page-header">Manage Habit Categories</h1>
+
+    <div class="card-grid">
+      <!-- Card: Create / Update -->
+      <div class="card">
+        <div class="card-icon">✏️</div>
+        <div class="card-title">Create / Update</div>
+        <div class="card-desc">Add a new habit category or modify an existing one.</div>
+        <button id="btnOpenCU" class="card-button">Open Editor</button>
+      </div>
+
+      <!-- Card: View Details -->
+      <div class="card">
+        <div class="card-icon">👁️</div>
+        <div class="card-title">View Details</div>
+        <div class="card-desc">Display the details of an existing category in read-only mode.</div>
+        <button id="btnOpenView" class="card-button">Open Viewer</button>
+      </div>
+
+      <!-- Card: Find Category -->
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Find Category</div>
+        <div class="card-desc">Search for a category by its name, ID, or other criteria.</div>
+        <button id="btnOpenFind" class="card-button">Open Finder</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="HabitCategoryManagement.js"></script>
+</body>
+</html>
