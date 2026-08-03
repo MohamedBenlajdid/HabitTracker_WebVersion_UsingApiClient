@@ -119,14 +119,13 @@ function cancelSelection() {
 async function loadData() {
   try {
     const api = new ApiClient();
-    const userId = ApiClient.CurrentUserId;
     if (!userId) {
       showError('User not logged in.');
       return;
     }
 
     // Load habits for the current user
-    const habits = await api.getAsync(`api/Habit/user/${userId}`);
+    const habits = await api.getAsync(`api/Habit`);
     allHabits = habits || [];
 
     // Load categories to map names

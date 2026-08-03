@@ -39,11 +39,14 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      // 2. Read the returned user ID (plain integer)
-      const userId = await response.json();
+      // 2. Read tokens from response (expect { accessToken, refreshToken })
+      const tokens = await response.json();
 
-      // 3. Store globally – the setter automatically saves to sessionStorage
-      ApiClient.CurrentUserId = userId;
+      // 3. Store tokens securely:
+      //    - accessToken → in-memory (static property)
+      //    - refreshToken → localStorage (via static setter)
+      ApiClient.accessToken = tokens.accessToken;
+      ApiClient.RefreshToken = tokens.refreshToken;
 
       // 4. Redirect to the main page
       window.location.href = 'Main.html';

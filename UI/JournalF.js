@@ -109,14 +109,14 @@ function applyFilter() {
 async function loadData() {
   try {
     const api = new ApiClient();
-    const userId = ApiClient.CurrentUserId;
+
     if (!userId) {
       alert('User not logged in.');
       return;
     }
 
     // Load entries
-    const entries = await api.getAsync(`api/Journal/user/${userId}`);
+    const entries = await api.getAsync(`api/Journal`);
     allEntries = entries || [];
 
     // Load moods

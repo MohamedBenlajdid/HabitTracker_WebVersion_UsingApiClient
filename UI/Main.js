@@ -24,18 +24,14 @@ function updateDateTime() {
   txtDateTime.textContent = formatDateTime(new Date());
 }
 
-// Load user info from API
+// Load user info from API using the authenticated token
 async function loadUserInfo() {
   try {
-    const api = new ApiClient(); // uses CurrentUserId
-    const userId = ApiClient.CurrentUserId;
-    if (!userId) {
-      txtUserEmail.textContent = '👤 Not logged in';
-      lblWelcome.textContent = 'Welcome!';
-      return;
-    }
+    const api = new ApiClient();
 
-    const user = await api.getAsync(`api/User/${userId}`);
+    // Call an endpoint that returns the current user's profile based on the token
+    const user = await api.getAsync('api/User/current'); // or 'api/User/current'
+
     if (user) {
       txtUserEmail.textContent = `👤 ${user.email}`;
       lblWelcome.textContent = `Welcome, ${user.firstName} ${user.lastName}!`;
@@ -45,7 +41,8 @@ async function loadUserInfo() {
     }
   } catch (error) {
     console.error('Failed to load user info:', error);
-    txtUserEmail.textContent = '👤 Offline';
+    // The ApiClient will throw if the session is expired or refresh failed
+    txtUserEmail.textContent = '👤 Not logged in';
     lblWelcome.textContent = 'Welcome!';
   }
 }
@@ -85,9 +82,17 @@ function setupCardButtons() {
 }
 
 // Logout
-btnLogout.addEventListener('click', () => {
-  ApiClient.CurrentUserId = null; // or 0
-  window.location.href = 'Login.html';
+btnLogout.addEventListener('click', async () => {
+  try {
+    const api = new ApiClient();
+    await api.logout(); // Revokes refresh token server-side and clears local tokens
+  } catch (error) {
+    console.error('Logout error:', error);
+    // Even if the server call fails, we still clear local state and redirect
+  } finally {
+    // Clear any additional client-side state if needed, then redirect
+    window.location.href = 'Login.html';
+  }
 });
 
 // Initialise on page load

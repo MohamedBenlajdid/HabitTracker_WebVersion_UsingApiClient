@@ -8,12 +8,12 @@ const txtDateTime = document.getElementById('txtDateTime');
 async function loadUserInfo() {
   try {
     const api = new ApiClient();
-    const userId = ApiClient.CurrentUserId;
+
     if (!userId) {
       txtUserEmail.textContent = '👤 Not logged in';
       return;
     }
-    const user = await api.getAsync(`api/User/${userId}`);
+    const user = await api.getAsync(`api/User`);
     txtUserEmail.textContent = `👤 ${user?.email || 'Unknown'}`;
   } catch {
     txtUserEmail.textContent = '👤 Offline';

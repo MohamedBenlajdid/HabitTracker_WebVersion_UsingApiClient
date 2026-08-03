@@ -132,15 +132,11 @@ async function loadData() {
   clearError();
   try {
     const api = new ApiClient();
-    const userId = ApiClient.CurrentUserId;
-    if (!userId) {
-      showError('User not logged in.');
-      setStatus('Error loading habits.');
-      return;
-    }
+
+    
 
     // 1. Get habits
-    const habits = await api.getAsync(`api/Habit/user/${userId}`);
+    const habits = await api.getAsync(`api/Habit/user`);
     allHabits = habits || [];
 
     // 2. Get categories for mapping

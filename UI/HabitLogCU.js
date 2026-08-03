@@ -10,7 +10,6 @@ const btnCancel = document.getElementById('btnCancel');
 
 // State
 let rows = []; // array of { habitId, habitName, isCompleted, notes, logId }
-let userId = ApiClient.CurrentUserId;
 let logDate = new Date(); // default to today
 
 // Helpers
@@ -94,7 +93,7 @@ function renderRows() {
 async function loadUserInfo() {
   try {
     const api = new ApiClient();
-    const user = await api.getAsync(`api/User/${userId}`);
+    const user = await api.getAsync(`api/User/current`);
     txtUsername.textContent = user ? user.email : 'Unknown';
   } catch {
     txtUsername.textContent = 'Unknown';
@@ -107,7 +106,7 @@ async function loadHabitsAndLogs() {
   try {
     const api = new ApiClient();
     // 1. Get habits for this user
-    const habits = await api.getAsync(`api/Habit/user/${userId}`);
+    const habits = await api.getAsync(`api/Habit/user`);
     if (!habits || habits.length === 0) {
       rows = [];
       renderRows();
@@ -116,7 +115,7 @@ async function loadHabitsAndLogs() {
 
     // 2. Get today's logs
     const dateStr = formatDate(logDate);
-    const logs = await api.getAsync(`api/HabitLog/user/${userId}/date/${dateStr}`);
+    const logs = await api.getAsync(`api/HabitLog/date/${dateStr}`);
     const logMap = {};
     if (logs) {
       logs.forEach(l => { logMap[l.habitID] = l; });

@@ -4,48 +4,114 @@
  * JavaScript equivalent of the C# ApiClient.
  * Uses fetch (available in Node 18+ and modern browsers).
  * For older Node versions, install and import 'node-fetch' or 'undici'.
+ * 
+ * Authentication:
+ *   - Access token is kept in memory (static variable) – not persisted.
+ *   - Refresh token is stored in localStorage (for demo; production should use HttpOnly Secure Cookie).
+ *   - Automatic token refresh on 401 responses.
  */
 class ApiClient {
-  /**
-   * Static getter/setter for CurrentUserId using sessionStorage
-   * to persist across page reloads/navigations.
-   */
-  static get CurrentUserId() {
-    const id = sessionStorage.getItem('currentUserId');
-    return id ? parseInt(id, 10) : null;
+  // ---------- Static token storage ----------
+  static accessToken = null; // in-memory only
+
+  static get RefreshToken() {
+    return localStorage.getItem('refreshToken');
   }
 
-  static set CurrentUserId(value) {
+  static set RefreshToken(value) {
     if (value == null) {
-      sessionStorage.removeItem('currentUserId');
+      localStorage.removeItem('refreshToken');
     } else {
-      sessionStorage.setItem('currentUserId', String(value));
+      localStorage.setItem('refreshToken', value);
     }
   }
 
+  // ---------- Constructor ----------
   /**
-   * @param {string} baseUrl - Base URL of the API (default: "http://localhost:5266/")
+   * @param {string} baseUrl - Base URL of the API (default: "https://habittracker-securedapis-project.onrender.com/")
    */
-  constructor(baseUrl = "http://localhost:5266/") {
+  constructor(baseUrl = "https://habittracker-securedapis-project.onrender.com/") {
     this.baseUrl = baseUrl;
-    // No need to store userId here – we use the static getter.
   }
 
+  // ---------- Private helpers ----------
   /**
-   * Builds the default headers, including the X-User-Id header.
+   * Builds the default headers including Authorization Bearer if available.
    * @returns {Record<string, string>}
    */
   _getHeaders() {
     const headers = {
       "Content-Type": "application/json",
     };
-    const userId = ApiClient.CurrentUserId;
-    if (userId != null) {
-      headers["X-User-Id"] = String(userId);
+    if (ApiClient.accessToken) {
+      headers["Authorization"] = `Bearer ${ApiClient.accessToken}`;
     }
     return headers;
   }
 
+  /**
+   * Core request method with automatic 401 handling and token refresh.
+   * @param {string} method - HTTP method (GET, POST, PUT, DELETE)
+   * @param {string} endpoint - API endpoint (e.g., "api/Habits")
+   * @param {any} [data] - Optional payload for POST/PUT
+   * @param {number} [retryCount=0] - Internal retry counter (max 1)
+   * @returns {Promise<Response>}
+   */
+  async _send(method, endpoint, data = null, retryCount = 0) {
+    const url = this.baseUrl + endpoint;
+    const options = {
+      method,
+      headers: this._getHeaders(),
+    };
+    if (data) {
+      options.body = JSON.stringify(data);
+    }
+
+    let response = await fetch(url, options);
+
+    // If 401 and we haven't retried yet, try to refresh the token
+    if (response.status === 401 && retryCount === 0) {
+      const refreshed = await this._refreshToken();
+      if (refreshed) {
+        // Retry the original request with the new token
+        return this._send(method, endpoint, data, retryCount + 1);
+      } else {
+        // Refresh failed – session is truly expired
+        throw new Error("Session expired. Please log in again.");
+      }
+    }
+
+    return response;
+  }
+
+  /**
+   * Calls the refresh endpoint to obtain a new access token using the refresh token.
+   * @returns {Promise<boolean>} - True if refresh succeeded, false otherwise.
+   */
+  async _refreshToken() {
+    const refreshToken = ApiClient.RefreshToken;
+    if (!refreshToken) return false;
+
+    try {
+      const response = await fetch(this.baseUrl + "api/Authentication/refresh", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(refreshToken),
+      });
+
+      if (!response.ok) return false;
+
+      const tokens = await response.json();
+      // Expect { accessToken: "...", refreshToken: "..." } from the API
+      ApiClient.accessToken = tokens.accessToken;
+      ApiClient.RefreshToken = tokens.refreshToken; // update if rotated
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // ---------- Public API methods ----------
   /**
    * Performs a GET request and returns the parsed JSON body.
    * @template T
@@ -53,10 +119,7 @@ class ApiClient {
    * @returns {Promise<T>}
    */
   async getAsync(endpoint) {
-    const response = await fetch(this.baseUrl + endpoint, {
-      method: "GET",
-      headers: this._getHeaders(),
-    });
+    const response = await this._send('GET', endpoint);
     if (!response.ok) {
       throw new Error(`HTTP error ${response.status}: ${response.statusText}`);
     }
@@ -66,15 +129,11 @@ class ApiClient {
   /**
    * Performs a POST request and returns the full Response object.
    * @param {string} endpoint
-   * @param {any} data - The payload to send (will be JSON-serialized)
+   * @param {any} data
    * @returns {Promise<Response>}
    */
   async postAsync(endpoint, data) {
-    return await fetch(this.baseUrl + endpoint, {
-      method: "POST",
-      headers: this._getHeaders(),
-      body: JSON.stringify(data),
-    });
+    return await this._send('POST', endpoint, data);
   }
 
   /**
@@ -84,11 +143,7 @@ class ApiClient {
    * @returns {Promise<Response>}
    */
   async putAsync(endpoint, data) {
-    return await fetch(this.baseUrl + endpoint, {
-      method: "PUT",
-      headers: this._getHeaders(),
-      body: JSON.stringify(data),
-    });
+    return await this._send('PUT', endpoint, data);
   }
 
   /**
@@ -97,10 +152,7 @@ class ApiClient {
    * @returns {Promise<Response>}
    */
   async deleteAsync(endpoint) {
-    return await fetch(this.baseUrl + endpoint, {
-      method: "DELETE",
-      headers: this._getHeaders(),
-    });
+    return await this._send('DELETE', endpoint);
   }
 
   /**
@@ -111,6 +163,29 @@ class ApiClient {
    */
   async readResponseAsync(response) {
     return await response.json();
+  }
+
+  /**
+   * Logs out the current user:
+   * - Calls the logout endpoint to invalidate the refresh token.
+   * - Clears both tokens from memory and localStorage.
+   * @returns {Promise<void>}
+   */
+  async logout() {
+    const refreshToken = ApiClient.RefreshToken;
+    if (refreshToken) {
+      try {
+        await fetch(this.baseUrl + "api/Authentication/logout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(refreshToken),
+        });
+      } catch {
+        // Ignore network errors during logout – still clean up locally
+      }
+    }
+    ApiClient.accessToken = null;
+    ApiClient.RefreshToken = null;
   }
 }
 

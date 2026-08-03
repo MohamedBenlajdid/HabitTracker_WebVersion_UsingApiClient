@@ -8,7 +8,7 @@ const tbody = document.getElementById('logBody');
 const btnCancel = document.getElementById('btnCancel');
 
 // State
-let userId = ApiClient.CurrentUserId;
+
 let selectedLogId = null;
 
 // Helpers
@@ -100,13 +100,13 @@ async function loadLogs(date) {
     const api = new ApiClient();
     const dateStr = formatDate(date);
     // 1. Get logs for the date
-    const logs = await api.getAsync(`api/HabitLog/user/${userId}/date/${dateStr}`);
+    const logs = await api.getAsync(`api/HabitLog/date/${dateStr}`);
     if (!logs || logs.length === 0) {
       renderLogs([], {});
       return;
     }
     // 2. Get all habits to map IDs to names
-    const habits = await api.getAsync(`api/Habit/user/${userId}`);
+    const habits = await api.getAsync(`api/Habit`);
     const habitMap = {};
     if (habits) {
       habits.forEach(h => { habitMap[h.habitID] = h.name; });
